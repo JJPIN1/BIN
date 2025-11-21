@@ -716,80 +716,46 @@ student cgpa
 </html>
 
 login from
-
-<!DOCTYPE html>
-<html ng-app="loginApp">
-<head>
-    <meta charset="UTF-8">
-    <title>AngularJS Login Form</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        .error { color: red; font-size: 14px; }
-        .success { color: green; font-size: 14px; }
-        input.ng-invalid.ng-touched { border-color: red; }
+<!DOCTYPE html> 
+<html ng-app="loginApp"> 
+<head> 
+<title>Login</title> 
+<style>
+     input.ng-invalid.ng-touched { border-color: red; }
         input.ng-valid.ng-touched { border-color: green; }
-        form { width: 300px; }
-    </style>
-</head>
-<body ng-controller="LoginController">
-
-    <h2>Login Form</h2>
-
-    <form name="loginForm" ng-submit="submitForm()" novalidate>
-        <div>
-            <label>Username:</label><br>
-            <input type="text" name="username" ng-model="user.username" required ng-minlength="3">
-            <div class="error" ng-show="loginForm.username.$touched && loginForm.username.$invalid">
-                <span ng-show="loginForm.username.$error.required">Username is required.</span>
-                <span ng-show="loginForm.username.$error.minlength">Minimum 3 characters required.</span>
-            </div>
-        </div>
-        <br>
-        <div>
-            <label>Password:</label><br>
-            <input type="password" name="password" ng-model="user.password" required ng-minlength="6">
-            <div class="error" ng-show="loginForm.password.$touched && loginForm.password.$invalid">
-                <span ng-show="loginForm.password.$error.required">Password is required.</span>
-                <span ng-show="loginForm.password.$error.minlength">Minimum 6 characters required.</span>
-            </div>
-        </div>
-        <br>
-        <button type="submit" ng-disabled="loginForm.$invalid">Login</button>
-    </form>
-
-    <p class="success" ng-if="loginSuccess">✅ Login successful!</p>
-    <p class="error" ng-if="loginFailed">❌ Invalid username or password.</p>
-
-    <script>
-        var app = angular.module('loginApp', []);
-
-        app.controller('LoginController', function($scope) {
-
-            $scope.user = {};
-            $scope.loginSuccess = false;
-            $scope.loginFailed = false;
-
-            const validUsername = "Jesteena";
-            const validPassword = "Coco@22/07/2001";
-
-            $scope.submitForm = function() {
-
-                if ($scope.loginForm.$valid) {
-                    if ($scope.user.username === validUsername && $scope.user.password === validPassword) {
-                        $scope.loginSuccess = true;
-                        $scope.loginFailed = false;
-                        console.log("Login successful:", $scope.user);
-                    } else {
-                        $scope.loginFailed = true;
-                        $scope.loginSuccess = false;
-                    }
-                }
-            };
-        });
-    </script>
-</body>
+</style>
+<script 
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> 
+</head> 
+<body ng-controller="ctrl"> 
+<h2>Login Form</h2> 
+<form name="f" ng-submit="login()" novalidate> 
+Username:<br> 
+<input type="text" ng-model="u" ng-minlength="4" required><br><br> 
+Password:<br> 
+<input type="password" ng-model="p" ng-minlength="4" required><br><br> 
+<button type="submit">Login</button> 
+</form> 
+<p style="color:green" ng-if="ok">Login Successful!</p> 
+<p style="color:red" ng-if="no">Invalid Login</p> 
+<script> 
+var app = angular.module("loginApp", []); 
+app.controller("ctrl", function($scope){ 
+const user="user", pass="123456"; //note: this is a correct login id // 
+$scope.login = function(){ 
+if($scope.u==user && $scope.p==pass){ 
+$scope.ok = true; 
+$scope.no = false; 
+} else { 
+$scope.no = true; 
+$scope.ok = false; 
+} 
+}; 
+}); 
+</script> 
+</body> 
 </html>
+
 
 employee list
 
