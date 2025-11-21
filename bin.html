@@ -1,1 +1,1055 @@
-hi
+Personal Details
+<!DOCTYPE html>
+<html  lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Personal Details</title>
+        <style>
+            body {
+                font-family : Arial,sans-serif;
+                background-color: #b0ecf7;
+                margin:30px;
+            }
+            .container {
+                width: 600px;
+                margin: auto;
+                background-color: #cddddaab;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0,0,0.1);
+            }
+            h2 {
+                text-align: center;
+                color : #f7fcfc ;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            td {
+                padding: 10px;
+                vertical-align: top;
+            }
+            th{
+                text-align: left;
+                padding: 10px;
+                background-color: #e1cbff;
+                color: #f7f7f7;
+
+            }
+            img{
+                width: 220px;
+                height: 220px;
+                border-radius: 10px;
+                object-fit: fill;
+            }
+            .address-box {
+                background-color: #f8f8f8;
+                padding: 10px;
+                border-radius: 6px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Personal Details </h2>
+            <table border="1">
+                <tr>
+                    <th> Name </th>
+                    <td>Giridhar Pai</td>
+                    <td rowspan="5" style="text-align: center;">
+                        <img src="WHITE HAT WOLF.jpg" alt="Profile Photo">
+                </tr>
+                <tr>
+                    <th> class </th>
+                    <td> LH 07 </td>
+                    </tr>
+                    <tr>
+                        <th> Qualification </th>
+                        <td> degree </td>
+                         </tr>
+                    <tr>
+                        <th> Email </th>
+                        <td> www.giridharpai@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <th> Phone </th>
+                        <td> +91 xxxxxxxxxx</td>
+                    </tr>
+                    <tr>
+                        <th> Address </th>
+                        <td colspan="2">
+                            <div class="address-box">
+                                yiascm 
+                                Manglore
+                                    </div>
+                        </td>
+                    </tr>
+            </table>
+        </div>
+    </body>
+</html>
+
+
+subject hyper link
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V SEMESTER SUBJECTS</title>
+    <style>
+        body{
+            font-family: Arial,sans-serif; 
+            background-color:#706f6f;
+            margin: 0;
+            padding:0px;
+        }
+        header,footer{
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav{
+            background-color: #555;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a{
+            color:rgb(248, 252, 252);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold; 
+        }
+
+        nav a:hover{
+            text-decoration: underline;
+        }
+        main{
+            display: flex;
+            flex-direction:row;
+            max-width:1200px;
+            margin: 20px auto;
+            padding:20px;
+        }
+
+        article{
+            flex:3;
+            padding-right: 20px;
+        }
+        section{
+            background-color: #f5f5f5;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px #4aa1f8;
+        }
+
+        section h2{
+            margin-top: 0;
+            color:#3f6e9c;
+        }
+        a.subject-link{
+            text-decoration: none;
+            background-color: #ffffff;
+            color:rgb(96, 200, 235);
+            font-weight: bold;
+            border: 1px solid ;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+
+        }
+        a.subject-link:hover{
+            background-color: #d8d8d8;
+            color: #4aa1f8;
+        }
+
+        aside{
+            flex:1;
+            background-color: #c7cfd1; 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px #363636;
+        }
+        aside h3{
+            margin-top: 0;
+            color:#4d90d3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>V SEMESTER SUBJECTS</h1>
+    </header>
+    <nav>
+        <a href="#PWA">PWA</a>
+        <a href="#OSS">OSS</a>
+        <a href="#ApWs">ApWs</a>
+        <a href="#TH">THREAT HUNTING</a>
+        <a href="#SE">SOFTWARE ENGINEERING</a>
+    </nav>
+    <main>
+        <article>
+            <section id="PWA">
+                <h2>Programming Web Applications</h2>
+                <p>Learning the fundamentals of PWA,including structure,coding,CSS and HTML and scripting languages too.</p>
+                <a href="PWA.html" class="subject-link">Go to PWA</a>
+            </section>
+            <section id="OSS">
+                <h2>Operating System Security</h2>
+                <p>Learning the fundamentals of OSS,including security,fundamentals of oss and its applications.</p>
+                <a href="OSS.html" class="subject-link">Go to OSS</a>
+            </section>
+            <section id="ApWs">
+                <h2>Application Web Security</h2>
+                <p>Learning the fundamentals of ApWs,including different applications,its security and its security measures to protect it.</p>
+                <a href="ApWs.html" class="subject-link">Go to ApWs</a>
+            </section>
+            <section id="TH">
+                <h2>Threat Hunting</h2>
+                <p>Learning the fundamentals of Threat hunting,including security threats,attacks,its prevention techniques and prevention methods.</p>
+                <a href="TH.html" class="subject-link">Go to TH</a>
+            </section>
+            <section id="SE">
+                <h2>Software Engineering</h2>
+                <p>Learning the fundamentals of Software Engineering,including Basics of SE,what is it and its applications.</p>
+                <a href="SE.html" class="subject-link">Go to SE</a>
+            </section>
+       </article>
+       <aside>
+            <h3>Exam Tips</h3>
+            <p>Focus on core concept and practice previous years,question paper.check the LMS portal for updates</p>
+            <hr>
+        </aside>
+    </main>
+    <footer>Contact us:+91XXXXXXXX,WHITEHATWOLF.....,<hr></footer>
+    </body>
+</html>
+
+
+frames
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Frame work</title>
+</head>
+
+
+<frameset rows="80px,*" frameborder="5" border="2">
+  <!-- Header -->
+  <frame src="header.html" name="header" noresize scrolling="no">
+
+  <!-- Sidebar and Main Content -->
+  <frameset cols="200px,*" frameborder="5" border="2">
+    <frame src="menu.html" name="sidebar" noresize>
+    <frame src="home.html" name="main">
+  </frameset>
+</frameset>
+
+</html>
+
+header.html
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1a1b1b;
+            color: rgb(222, 220, 227);
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to my world</h1>
+    </header>
+</body>
+</html>
+
+menu.html
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: #413f3d;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+
+    a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 10px;
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    a:hover {
+      background-color: #2c2f33b4;
+    }
+  </style>
+</head>
+<body>
+  <a href="home.html" target="main">Home</a>
+  <a href="about.html" target="main">About Us</a>
+  <a href="services.html" target="main">Services</a>
+</body>
+</html>
+
+home.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Home - Your Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h2>Home</h2>
+    <p>Welcome to our website! Explore our services and learn more about us.</p>
+
+</body>
+</html>
+
+about.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>About Us - IT Services</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h2>About Us</h2>
+    <p>We provide secure, modern, and scalable IT services.</p>
+
+</body>
+</html>
+
+contactus.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Our Services</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h2>Our Services</h2>
+    <ul>
+        <li>Frame Repairs</li>
+        <li>Frame Creation</li>
+        <li>Frame Fixing</li>
+        <li>Frame Work Colouring</li>
+        <li>Contact Us: +91-XXXXXXXXXX</li>
+    </ul>
+
+</body>
+</html>
+
+styles.css
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: bisque;
+}
+
+h2 {
+    color: #e93d3d;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+p {
+    color: #555;
+    font-size: 1.1em;
+}
+
+
+css styles
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Types Demo</title>
+    <style>
+        h1{
+            color:rgb(94, 94, 116);
+            text-align:center;
+        }
+        .internal-style{
+            color:rgb(0, 124, 128);
+            font-size:18px;
+        }
+        
+    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <p style="color:rgb(230, 88, 6); font-weight:bold;">This paragraph uses inline css.</p>
+    <h1>This heading uses internal css.</h1>
+    <p class="internal-style">This paragraph is styled using internal css.</p>
+    <p class="external-style">This paragraph is styled using external css.</p>
+</body>
+</html>
+
+styles.css
+.external-style{
+    color:rgb(82, 82, 214);
+    font-style:italic;
+    font-size: 16px;
+}
+
+
+Horizontal drop down
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Horizontal Dropdown</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .menu-btn{
+                background-color: #4008;
+                color:white;
+                padding:20px;
+                font-weight:bolder;
+                font-family:"Segoe UI",'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                border:none;
+            }
+            .dropdown-menu{
+                position:relative;
+                display: inline-block;
+            }
+            .menu-content{
+                display:none;
+                position:absolute;
+                background-color: #808581;
+               
+            }
+            nav{
+                background-color:#017575;
+            }
+            .links,
+            .links-hidden{
+                display:inline-block;
+                color:rgb(255,255,255);
+                padding:8px 12px;
+             
+                font-size:12px;
+            }
+            .links-hidden{
+                display: block;
+            }
+            .links{
+                display:inline-block;
+            }
+            .links-hidden:hover,
+            .links:hover{
+                transform: scale(1.2);
+            }
+            .dropdown-menu:hover .menu-content{
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a class="links" href="#">Home</a>
+            <a class="links" href="#">Services</a>
+            <a class="links" href="#">Products</a>
+            <div class="dropdown-menu">
+                <button class="menu-btn">Dropdown</button>
+                <i class="fa fa-caret-down"></i>
+                <div class="menu-content">
+                    <a class="links-hidden" href="#">Contact Us</a>
+                    <a class="links-hidden" href="#">Visit Us</a>
+                    <a class="links-hidden" href="#">About Us</a>
+                </div>
+            </div>
+        </nav>
+    </body>
+</html>
+
+capital
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Capitals of Countries</title>
+        <style>
+            p{
+                color:rgb(255, 0, 140);
+                font-weight: bold;
+                font-size: 50px;
+            }
+        </style>
+        <script language="javascript">
+            function capital()
+            {
+                var country = document.forms["form1"].country.value;
+                var capital= "Please select any country";
+
+                if(country == "india")
+                {
+                    capital = "New Delhi";
+                }
+                else if(country == "china")
+                {
+                    capital = "Beijing";
+                }
+                else if(country == "uk")
+                {
+                    capital = "LONDON";
+                }
+                else if(country == "usa")
+                {
+                    capital = "WASHINGTON D.C";
+                }
+                else if(country == "japan")
+                {
+                    capital = "Tokyo";
+                }
+                if(country == "select")
+                {
+                    capital = "Please select any country";
+                }
+                document.getElementById("capital-name").innerHTML = capital;
+            }  
+        </script>
+    </head>
+    <body>
+        <form name="form1">
+            <br/>
+            <center>
+                Select a Country: <select name="country" onchange="capital()">
+                    <option value="select">--Select--</option>
+                    <option value="india">INDIA</option>
+                    <option value="china">CHINA</option>
+                    <option value="uk">UK</option>
+                    <option value="usa">USA</option>
+                    <option value="japan">JAPAN</option>
+                    </select>
+                    <br/>
+                    <br/>
+                     <p id="capital-name"></p>
+            </center>
+             
+        </form>
+    </body>
+</html>
+
+calculator
+
+<!DOCTYPE html>
+<html lang="en" ng-app="calcAPP">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple calculator</title>
+    <style>
+        body{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .calculator{
+            display: inline-block;
+            border: 2px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 0 10px #ccc;
+            background-color: #ffffff;
+        }
+        .display{
+            width: 240px;
+            height: 40px;
+            text-align: right;
+            padding: 5px;
+            margin-bottom: 15px;
+            border: 1px solid rgb(152, 152, 155);
+        }
+        .buttons{
+            display: grid;
+            grid-template-columns: repeat(4, 60px);
+            gap: 10px;
+        }
+        button{
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 1px solid rgb(127, 127, 131);
+        }
+    </style>
+</head>
+<body ng-controller="calcCtrl">
+    <div class="calculator">
+        <h2>Simple calculator</h2>
+        <input type="text" class="display" ng-model="display" readonly>
+        <div class="buttons">
+            <button ng-click="append('1')">1</button>
+            <button ng-click="append('2')">2</button>
+            <button ng-click="append('3')">3</button>
+            <button ng-click="append('+')">+</button>
+            <button ng-click="append('4')">4</button>
+            <button ng-click="append('5')">5</button>
+            <button ng-click="append('6')">6</button>
+            <button ng-click="append('-')">-</button>
+            <button ng-click="append('7')">7</button>
+            <button ng-click="append('8')">8</button>
+            <button ng-click="append('9')">9</button>
+            <button ng-click="append('*')">*</button>
+            <button ng-click="append('0')">0</button>
+            <button ng-click="clear()">C</button>
+            <button ng-click="calculate()">=</button>
+            <button ng-click="append('/')">/</button>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var app = angular.module('calcAPP', []);
+        app.controller('calcCtrl', function($scope) {
+            $scope.display = "";
+            $scope.append = function(value) {
+                $scope.display += value;
+            }
+            $scope.clear = function() {
+                $scope.display = "";
+            }
+            $scope.calculate = function() {
+                try {
+                    $scope.display = eval($scope.display).toString();
+                } catch (e) {
+                    $scope.display = "Error";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+student cgpa
+
+<!DOCTYPE html>
+<html ng-app="studentApp">
+<head>
+    <title>Student CGPA Viewer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h1, h3 {
+            color: #333;
+        }
+    </style>
+</head>
+<body ng-controller="StudentController">
+    <h1>Student Details</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>CGPA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="student in students">
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.cgpa }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h3>Total Students: {{ students.length }}</h3>
+
+    <script>
+        angular.module('studentApp', [])
+        .controller('StudentController', function($scope) {
+            $scope.students = [
+                {id: 25252, name: 'Giridhar', cgpa: 9.5},
+                {id: 28467, name: 'Jesty', cgpa: 9.5},
+                {id: 26458, name: 'Ananth', cgpa: 7.2},
+                {id: 25253, name: 'Santhosh', cgpa: 8.9},
+                {id: 23123, name: 'Tenzin', cgpa: 8.5}
+            ];
+        });
+    </script>
+</body>
+</html>
+
+login from
+
+<!DOCTYPE html>
+<html ng-app="loginApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Login Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .error { color: red; font-size: 14px; }
+        .success { color: green; font-size: 14px; }
+        input.ng-invalid.ng-touched { border-color: red; }
+        input.ng-valid.ng-touched { border-color: green; }
+        form { width: 300px; }
+    </style>
+</head>
+<body ng-controller="LoginController">
+
+    <h2>Login Form</h2>
+
+    <form name="loginForm" ng-submit="submitForm()" novalidate>
+        <div>
+            <label>Username:</label><br>
+            <input type="text" name="username" ng-model="user.username" required ng-minlength="3">
+            <div class="error" ng-show="loginForm.username.$touched && loginForm.username.$invalid">
+                <span ng-show="loginForm.username.$error.required">Username is required.</span>
+                <span ng-show="loginForm.username.$error.minlength">Minimum 3 characters required.</span>
+            </div>
+        </div>
+        <br>
+        <div>
+            <label>Password:</label><br>
+            <input type="password" name="password" ng-model="user.password" required ng-minlength="6">
+            <div class="error" ng-show="loginForm.password.$touched && loginForm.password.$invalid">
+                <span ng-show="loginForm.password.$error.required">Password is required.</span>
+                <span ng-show="loginForm.password.$error.minlength">Minimum 6 characters required.</span>
+            </div>
+        </div>
+        <br>
+        <button type="submit" ng-disabled="loginForm.$invalid">Login</button>
+    </form>
+
+    <p class="success" ng-if="loginSuccess">✅ Login successful!</p>
+    <p class="error" ng-if="loginFailed">❌ Invalid username or password.</p>
+
+    <script>
+        var app = angular.module('loginApp', []);
+
+        app.controller('LoginController', function($scope) {
+
+            $scope.user = {};
+            $scope.loginSuccess = false;
+            $scope.loginFailed = false;
+
+            const validUsername = "Jesteena";
+            const validPassword = "Coco@22/07/2001";
+
+            $scope.submitForm = function() {
+
+                if ($scope.loginForm.$valid) {
+                    if ($scope.user.username === validUsername && $scope.user.password === validPassword) {
+                        $scope.loginSuccess = true;
+                        $scope.loginFailed = false;
+                        console.log("Login successful:", $scope.user);
+                    } else {
+                        $scope.loginFailed = true;
+                        $scope.loginSuccess = false;
+                    }
+                }
+            };
+        });
+    </script>
+</body>
+</html>
+
+employee list
+
+<!DOCTYPE html>
+<html lang="en" ng-app="employeeApp">
+<head>
+ <meta charset="UTF-8">
+ <title>Employee List</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ padding: 20px;
+ }
+ h1 {
+ color: #333;
+ }
+ input {
+ margin: 10px 10px 20px 0;
+ padding: 8px;
+ width: 200px;
+ }
+ table {
+ width: 80%;
+ border-collapse: collapse;
+ margin-top: 10px;
+ }
+ th, td {
+ border: 1px solid #ddd;
+ padding: 12px;
+ text-align: left;
+ }
+ th {
+ background-color: #f4f4f4;
+ }
+tr:hover {
+ background-color: #f1f1f1;
+ }
+ </style>
+</head>
+<body ng-controller="EmployeeController">
+ <h1>Employee List</h1>
+ <input type="text" ng-model="searchName" placeholder="Search by name" />
+ <input type="number" ng-model="searchSalary" placeholder="Search by salary" />
+ <!-- Employee Table -->
+ <table>
+ <thead>
+ <tr>
+ <th>Name</th>
+ <th>Position</th>
+ <th>Salary</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr ng-repeat="employee in employees | filter:customFilter">
+ <td>{{ employee.name }}</td>
+ <td>{{ employee.position }}</td>
+ <td>{{ employee.salary | currency }}</td>
+ </tr>
+ </tbody>
+ </table>
+ <script>
+ var app = angular.module('employeeApp', []);
+ app.controller('EmployeeController', function($scope) {
+ $scope.employees = [
+ { name: 'Anya', position: 'Data Analyst', salary: 70000 },
+  { name: 'Ben', position: 'DevOps Engineer', salary: 78000 },
+  { name: 'Chloe', position: 'Marketing Lead', salary: 62000 },
+  { name: 'David', position: 'Business Analyst', salary: 65000 },
+  { name: 'Elara', position: 'Customer Support Lead', salary: 53000 }
+ ];
+ $scope.customFilter = function(employee) {
+ var nameMatch = true;
+ var salaryMatch = true;
+ if ($scope.searchName) {
+ nameMatch =
+employee.name.toLowerCase().includes($scope.searchName.toLowerCase());
+ }
+ if ($scope.searchSalary) {
+ salaryMatch = employee.salary === parseInt($scope.searchSalary);
+ }
+ return nameMatch && salaryMatch;
+ };
+ });
+ </script>
+</body>
+</html>
+
+shopping cart
+
+<!DOCTYPE html>
+<html ng-app="shoppingApp">
+<head>
+ <meta charset="UTF-8">
+ <title>Simple Shopping Cart</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+ <style>
+ table, th, td {
+ border: 1px solid #ccc;
+ border-collapse: collapse;
+ padding: 8px;
+ }
+ h2 {
+ color: #333;
+ }
+ button {
+ padding: 4px 10px;
+ margin: 2px;
+ cursor: pointer;
+ }
+ </style>
+</head>
+<body ng-controller="CartController">
+ <h2>Available Products</h2>
+ <table>
+ <tr>
+ <th>Name</th>
+ <th>Price ($)</th>
+ <th>Action</th>
+ </tr>
+ <tr ng-repeat="product in products">
+ <td>{{ product.name }}</td>
+ <td>{{ product.price }}</td>
+ <td><button ng-click="addToCart(product)">Add to Cart</button></td>
+ </tr>
+ </table>
+ 
+ <h2>Your Cart</h2>
+ <table ng-if="cart.length > 0">
+ <tr>
+ <th>Name</th>
+ <th>Price ($)</th>
+ <th>Action</th>
+ </tr>
+ <tr ng-repeat="item in cart">
+ <td>{{ item.name }}</td>
+ <td>{{ item.price }}</td>
+ <td><button ng-click="removeFromCart($index)">Remove</button></td>
+ </tr>
+ <tr>
+ <td colspan="1"><strong>Total</strong></td>
+ <td colspan="2"><strong>${{ getTotal() }}</strong></td>
+ </tr>
+ </table>
+ <p ng-if="cart.length == 0">Your cart is empty.</p>
+ 
+ <script>
+ angular.module('shoppingApp', [])
+ .controller('CartController', function($scope) {
+
+  $scope.products = [
+  { name: 'ASUS LAPTOP', price: 150000 },
+  { name: 'Iphone', price: 200000 },
+  { name: 'Headset', price: 1500 },
+  { name: 'RGB KEYBOARD', price: 2000 },
+  { name: 'USB DRIVE', price: 500 }
+  ];
+  
+  $scope.cart = [];
+  
+  $scope.addToCart = function(product) {
+  $scope.cart.push(product);
+  };
+  
+  
+  $scope.removeFromCart = function(index) {
+  $scope.cart.splice(index, 1);
+  };
+  
+  $scope.getTotal = function() {
+  let total = 0;
+  angular.forEach($scope.cart, function(item) {
+  total += item.price;
+  });
+  return total;
+  };
+ });
+ </script>
+</body>
+</html>
+
+student attendance
+
+<!DOCTYPE html>
+<html ng-app="attendanceApp">
+<head>
+ <meta charset="UTF-8">
+ <title>Student Attendance Tracker</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+ <style>
+ table, th, td {
+ border: 1px solid #aaa;
+ border-collapse: collapse;
+ padding: 8px;
+ }
+ th {
+ background-color: #f0f0f0;
+ }
+ h2 {
+ color: #333;
+ }
+ select {
+ padding: 4px;
+ }
+ </style>
+</head>
+<body ng-controller="AttendanceController">
+ <h2>Student Attendance Tracker</h2>
+ <table>
+ <tr>
+ <th>Roll No</th>
+ <th>Name</th>
+ <th>Attendance</th>
+ </tr>
+ <tr ng-repeat="student in students">
+ <td>{{ student.roll }}</td>
+ <td>{{ student.name }}</td>
+ <td>
+ <select ng-model="student.status">
+ <option value="Present">Present</option>
+ <option value="Absent">Absent</option>
+ </select>
+ </td>
+ </tr>
+ </table>
+ 
+ <h3>Attendance Summary</h3>
+ <p>Total Students: {{ students.length }}</p>
+ <p>Present: {{ getPresentCount() }}</p>
+ <p>Absent: {{ getAbsentCount() }}</p>
+ 
+ <script>
+ angular.module('attendanceApp', [])
+ .controller('AttendanceController', function($scope) {
+  // Predefined list of students with default status
+  $scope.students = [
+  { roll: 25101, name: 'Giridhar Pai', status: 'Present' },
+  { roll: 25102, name: 'Jesteena', status: 'Present' },
+  { roll: 25103, name: 'Tenzin', status: 'Absent' },
+  { roll: 25104, name: 'Ananth', status: 'Present' },
+  { roll: 25105, name: 'Vinayak', status: 'Absent' }
+  ];
+ 
+  // Function to count Present students
+  $scope.getPresentCount = function() {
+  let count = 0;
+  angular.forEach($scope.students, function(student) {
+  if (student.status === 'Present') count++;
+  });
+  return count;
+  };
+ 
+  // Function to count Absent students
+  $scope.getAbsentCount = function() {
+  let count = 0;
+  angular.forEach($scope.students, function(student) {
+  if (student.status === 'Absent') count++;});
+  return count;
+  };
+ });
+ </script>
+</body>
+</html>
