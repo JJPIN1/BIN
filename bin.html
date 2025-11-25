@@ -1,850 +1,1239 @@
-Personal Details
-<!DOCTYPE html> 
-<head> 
-    <title>Personal Details</title> 
-  <style> 
-        .container { 
-      width: 600px; 
-           background-color: #ffffff; 
-          } 
-    h2 { 
-      text-align: center; 
-      color: black; 
-    } 
-    table { 
-      width: 100%; 
-      
-          } 
-     
-    th { 
-      text-align: left;       
-      background-color: blue; 
-      
-    } 
-     
-    
-  </style> 
-</head> 
-<body> 
- 
-  <div class="container"> 
-    <h2>Personal Details</h2> 
-    <table border="1"> 
-      <tr> 
-        <th>Name</th> 
-        <td>Unknown</td> 
-        <td rowspan="5" style="text-align: center;"> 
-          <img src="https://via.placeholder.com/120" alt="Profile Photo"> 
-        </td> 
-      </tr> 
-      <tr> 
-        <th>Class</th> 
-        <td>Unknown</td> 
-      </tr> 
-      <tr> 
-        <th>Qualification</th> 
-        <td>Unknown</td> 
-      </tr> 
-      <tr> 
-        <th>Email</th> 
-        <td>unknown@example.com</td> 
-      </tr> 
-      <tr> 
-        <th>Phone</th> 
-        <td>+91 XXXXXXXXXX</td> 
-      </tr> 
-      <tr> 
-        <th>Address</th> 
-        <td colspan="2"> 
-          <div class="address-box"> 
-            Unknown Address,<br> 
-            City, State – PINCODE 
-          </div> 
-        </td> 
-      </tr> 
-    </table> 
-  </div> 
-</body> 
-</html>
+# ============================
+# PART B - Program 1
+# Encoding and Decoding Schemes
+# ============================
+import base64
+import urllib.parse
+import html
 
-subject hyper link
+def base64_encode_decode(text):
+    encoded = base64.b64encode(text.encode()).decode()
+    decoded = base64.b64decode(encoded.encode()).decode()
+    return encoded, decoded
 
-<!DOCTYPE html> 
-<html> 
-<head> 
-    <title>Semester Subjects</title> 
-    <style> 
-        
- 
-        header, footer { 
-            background: #2c3e50; 
-            color: white; 
-            padding: 20px; 
-            text-align: center; 
-        } 
-       
-        nav a { 
-            color: black; 
-            margin: 0 15px;            
-        } 
- 
-        main {             
-            margin: 20px auto;             
-        } 
- 
-        section { 
-            background: white;             
-            padding: 20px; 
-                        
-        } 
- 
- 
-        .subject-link {             
-             
-            padding: 8px 16px; 
-            color: #2980b9; 
-            border: 1px solid pink;                      
-        } 
- 
-         
-    </style> 
-</head> 
- 
-<body> 
- 
-<header> 
-    <h1>Current Semester Subjects</h1> 
-</header> 
- 
-<nav> 
-    <a href="#python">Python</a> 
-    <a href="#ds">Data Structures</a> 
-     
-</nav> 
- 
-<main> 
- 
-    <section id="python"> 
-        <h2>Python Programming</h2> 
-        <p>Learn the fundamentals of Python............. </p> 
-        <a href="python.html" class="subject-link">Go to Python</a> 
-    </section> 
- 
-    <section id="ds"> 
-        <h2>Data Structures</h2> 
-        <p>Understand <p> 
-        <a href="datastructures.html" class="subject-link">Go to Data Structures</a> 
-    </section> 
-    
-</main> 
-<footer> 
-    Contact us: +91XXXXXXXXX, YIASCM 
-</footer> 
-</body> 
-</html>
+def url_encode_decode(text):
+    encoded = urllib.parse.quote(text)
+    decoded = urllib.parse.unquote(encoded)
+    return encoded, decoded
+
+def html_encode_decode(text):
+    encoded = html.escape(text)
+    decoded = html.unescape(encoded)
+    return encoded, decoded
+
+def hex_encode_decode(text):
+    encoded = text.encode().hex()
+    decoded = bytes.fromhex(encoded).decode()
+    return encoded, decoded
+
+def main():
+    sample_text = "<script>alert('XSS')</script>"
+    print("Original Text:", sample_text)
+
+    b64_enc, b64_dec = base64_encode_decode(sample_text)
+    print("\nBase64 Encoding:", b64_enc)
+    print("Base64 Decoding:", b64_dec)
+
+    url_enc, url_dec = url_encode_decode(sample_text)
+    print("\nURL Encoding:", url_enc)
+    print("URL Decoding:", url_dec)
+
+    html_enc, html_dec = html_encode_decode(sample_text)
+    print("\nHTML Encoding:", html_enc)
+    print("HTML Decoding:", html_dec)
+
+    hex_enc, hex_dec = hex_encode_decode(sample_text)
+    print("\nHex Encoding:", hex_enc)
+    print("Hex Decoding:", hex_dec)
+
+if __name__ == "__main__":
+    main()
 
 
-Frames
+# ============================
+# PART B - Program 3
+# Flask Server with HTTP Codes server.py
+# ============================
+from flask import Flask
 
-index.html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Frame work</title>
-</head>
+app = Flask(__name__)
 
+@app.route("/success")
+def success():
+    return "200 OK - Success", 200
 
-<frameset rows="80px,*" frameborder="5" border="2">
-  <!-- Header -->
-  <frame src="header.html" name="header" noresize scrolling="no">
+@app.route("/forbidden")
+def forbidden():
+    return "403 Forbidden - Access Denied", 403
 
-  <!-- Sidebar and Main Content -->
-  <frameset cols="200px,*" frameborder="5" border="2">
-    <frame src="menu.html" name="sidebar" noresize>
-    <frame src="home.html" name="main">
-  </frameset>
-</frameset>
+@app.route("/notfound")
+def not_found():
+    return "404 Not Found - Page doesn't exist", 404
 
-</html>
+@app.route("/error")
+def server_error():
+    return "500 Internal Server Error - Something went wrong", 500
 
-header.html
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #1a1b1b;
-            color: rgb(222, 220, 227);
-            padding: 10px 0;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Welcome to my world</h1>
-    </header>
-</body>
-</html>
-
-menu.html
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    body {
-      background-color: #413f3d;
-      color: white;
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      margin: 0;
-    }
-
-    a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      margin-bottom: 10px;
-      padding: 8px;
-      border-radius: 5px;
-    }
-
-    a:hover {
-      background-color: #2c2f33b4;
-    }
-  </style>
-</head>
-<body>
-  <a href="home.html" target="main">Home</a>
-  <a href="about.html" target="main">About Us</a>
-  <a href="services.html" target="main">Services</a>
-</body>
-</html>
-
-home.html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    
-    <title>Home - Your Website</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-    <h2>Home</h2>
-    <p>Welcome to our website! Explore our services and learn more about us.</p>
-
-</body>
-</html>
-
-about.html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    
-    <title>About Us - IT Services</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-    <h2>About Us</h2>
-    <p>We provide secure, modern, and scalable IT services.</p>
-
-</body>
-</html>
-
-contactus.html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Our Services</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-    <h2>Our Services</h2>
-    <ul>
-        <li>Frame Repairs</li>
-        <li>Frame Creation</li>
-        <li>Frame Fixing</li>
-        <li>Frame Work Colouring</li>
-        <li>Contact Us: +91-XXXXXXXXXX</li>
-    </ul>
-
-</body>
-</html>
-
-styles.css
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 20px;
-    background-color: bisque;
-}
-
-h2 {
-    color: #e93d3d;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 10px;
-}
-
-p {
-    color: #555;
-    font-size: 1.1em;
-}
+if __name__ == "__main__":
+    app.run(debug=True)
 
 
-css styles
-<!DOCTYPE html>
-<html>
-<head>
-    <title>CSS Types Demo</title>
-    <style>
-        h1{
-            color:rgb(94, 94, 116);
-            text-align:center;
-        }
-        .internal-style{
-            color:rgb(0, 124, 128);
-            font-size:18px;
-        }
-        
-    </style>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
-    <p style="color:rgb(230, 88, 6); font-weight:bold;">This paragraph uses inline css.</p>
-    <h1>This heading uses internal css.</h1>
-    <p class="internal-style">This paragraph is styled using internal css.</p>
-    <p class="external-style">This paragraph is styled using external css.</p>
-</body>
-</html>
+#=====================
+#3 program 
+#client.py
+import requests
 
-styles.css
-.external-style{
-    color:rgb(82, 82, 214);
-    font-style:italic;
-    font-size: 16px;
-}
+base_url = "http://127.0.0.1:5000"
+endpoints = ["/success", "/forbidden", "/notfound", "/error"]
+
+for endpoint in endpoints:
+    url = base_url + endpoint
+    response = requests.get(url)
+    print(f"\nRequest to {url}")
+    print(f"Status Code: {response.status_code}")
+    print(f"Response Body: {response.text}")
 
 
-Horizontal drop down
+# ============================
+# PART B - Program 4
+# Brute Force Attack login_server.py
+# ============================
+from flask import Flask, request, jsonify
 
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-nav {
-  background-color: red;
-}
+app = Flask(__name__)
 
-.links {
-  color: white;
-  padding: 8px 12px;
-}
+VALID_USERNAME = "admin"
+VALID_PASSWORD = "secure123"
 
-.dropdown-menu {
-  display: inline-block;
-  position: relative;
-}
+@app.route("/login", methods=["POST"])
+def login():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+    if username == VALID_USERNAME and password == VALID_PASSWORD:
+        return jsonify({"status": "success", "message": "Login successful"}), 200
+    else:
+        return jsonify({"status": "fail", "message": "Invalid credentials"}), 401
 
-.menu-btn {
-  background-color: black;
-  color: white;
-  padding: 12px;
-}
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
 
-.menu-content {
-  display: none;
-  position: absolute;
-  background-color: pink;
-}
+# Separate brute_force.py script:
+import requests
 
-.menu-content a {
-  display: block;
-  padding: 8px 12px;
-  color: black;
-}
+url = "http://127.0.0.1:5000/login"
+username = "admin"
 
-/* 👇 This makes the dropdown work */
-.dropdown-menu:hover .menu-content {
-  display: block;
-}
-</style>
-</head>
-<body>
-
-<nav>
-  <a class="links" href="#">Home</a>
-  <a class="links" href="#">Services</a>
-  <a class="links" href="#">Products</a>
-
-  <div class="dropdown-menu">
-    <button class="menu-btn">Dropdown</button>
-    <div class="menu-content">
-      <a href="#">Contact Us</a>
-      <a href="#">Visit Us</a>
-      <a href="#">About Us</a>
-    </div>
-  </div>
-</nav>
-
-</body>
-</html>
-capital
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Capitals of Countries</title>
-        <style>
-            p{
-                color:rgb(255, 0, 140);
-                font-weight: bold;
-                font-size: 50px;
-            }
-        </style>
-        <script language="javascript">
-            function capital()
-            {
-                var country = document.forms["form1"].country.value;
-                var capital= "Please select any country";
-
-                if(country == "india")
-                {
-                    capital = "New Delhi";
-                }
-                else if(country == "china")
-                {
-                    capital = "Beijing";
-                }
-                else if(country == "uk")
-                {
-                    capital = "LONDON";
-                }
-                else if(country == "usa")
-                {
-                    capital = "WASHINGTON D.C";
-                }
-                else if(country == "japan")
-                {
-                    capital = "Tokyo";
-                }
-                if(country == "select")
-                {
-                    capital = "Please select any country";
-                }
-                document.getElementById("capital-name").innerHTML = capital;
-            }  
-        </script>
-    </head>
-    <body>
-        <form name="form1">
-            <br/>
-            <center>
-                Select a Country: <select name="country" onchange="capital()">
-                    <option value="select">--Select--</option>
-                    <option value="india">INDIA</option>
-                    <option value="china">CHINA</option>
-                    <option value="uk">UK</option>
-                    <option value="usa">USA</option>
-                    <option value="japan">JAPAN</option>
-                    </select>
-                    <br/>
-                    <br/>
-                     <p id="capital-name"></p>
-            </center>
-             
-        </form>
-    </body>
-</html>
-
-calculator
-
-<!DOCTYPE html>
-<html lang="en" ng-app="calcAPP">
-<head>
-    <meta charset="UTF-8">
-    <title>Simple calculator</title>
-    <style>
-        body{
-            text-align: center;
-            margin-top: 50px;
-        }
-        .calculator{
-            display: inline-block;
-            border: 2px solid #ccc;
-            padding: 20px;
-            box-shadow: 0 0 10px #ccc;
-            background-color: #ffffff;
-        }
-        .display{
-            width: 240px;
-            height: 40px;
-            text-align: right;
-            padding: 5px;
-            margin-bottom: 15px;
-            border: 1px solid rgb(152, 152, 155);
-        }
-        .buttons{
-            display: grid;
-            grid-template-columns: repeat(4, 60px);
-            gap: 10px;
-        }
-        button{
-            padding: 15px;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 5px;
-            border: 1px solid rgb(127, 127, 131);
-        }
-    </style>
-</head>
-<body ng-controller="calcCtrl">
-    <div class="calculator">
-        <h2>Simple calculator</h2>
-        <input type="text" class="display" ng-model="display" readonly>
-        <div class="buttons">
-            <button ng-click="append('1')">1</button>
-            <button ng-click="append('2')">2</button>
-            <button ng-click="append('3')">3</button>
-            <button ng-click="append('+')">+</button>
-            <button ng-click="append('4')">4</button>
-            <button ng-click="append('5')">5</button>
-            <button ng-click="append('6')">6</button>
-            <button ng-click="append('-')">-</button>
-            <button ng-click="append('7')">7</button>
-            <button ng-click="append('8')">8</button>
-            <button ng-click="append('9')">9</button>
-            <button ng-click="append('*')">*</button>
-            <button ng-click="append('0')">0</button>
-            <button ng-click="clear()">C</button>
-            <button ng-click="calculate()">=</button>
-            <button ng-click="append('/')">/</button>
-        </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script>
-        var app = angular.module('calcAPP', []);
-        app.controller('calcCtrl', function($scope) {
-            $scope.display = "";
-            $scope.append = function(value) {
-                $scope.display += value;
-            }
-            $scope.clear = function() {
-                $scope.display = "";
-            }
-            $scope.calculate = function() {
-                try {
-                    $scope.display = eval($scope.display).toString();
-                } catch (e) {
-                    $scope.display = "Error";
-                }
-            }
-        });
-    </script>
-</body>
-</html>
-
-student cgpa
-
-<!DOCTYPE html>
-<html ng-app="studentApp">
-<head>
- <title>Student CGPA Viewer</title>
- <script
-src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-
-</head>
-<body ng-controller="StudentController">
- <h1>Student Details</h1>
- <table border=1>
- <thead>
- <tr>
- <th>Student ID</th>
- <th>Name</th>
- <th>CGPA</th>
- </tr>
- </thead>
- <tbody>
- <tr ng-repeat="student in students">
- <td>{{ student.id }}</td>
- <td>{{ student.name }}</td>
- <td>{{ student.cgpa }}</td>
- </tr>
- </tbody>
- </table>
- <h3>Total Students: {{ students.length }}</h3>
- <script>
- angular.module('studentApp', [])
- .controller('StudentController', function($scope) {
- $scope.students = [
- {id: 25252, name: 'Giridhar', cgpa: 9.5},
- {id: 28467, name: 'Jesty', cgpa: 9.5},
- {id: 26458, name: 'Ananth', cgpa: 7.2},
- {id: 25253, name: 'Santhosh', cgpa: 8.9},
- {id: 23123, name: 'Tenzin', cgpa: 8.5}
- ];
- });
- </script>
-</body>
-</html>
+with open("wordlist.txt", "r") as file:
+    for line in file:
+        password = line.strip()
+        print(f"Trying password: {password}")
+        response = requests.post(url, json={"username": username, "password": password})
+        if response.status_code == 200:
+            print(f"\n[+] Password found: {password}")
+            break
+        else:
+            print("[-] Incorrect password")
 
 
-login from
+#=============
+#wordlist.txt
+#==============
+70yg7l3
+1q2w3e4r
+welcome
+admin
+123123
+hmg86zc9
+yxgb3e39
+trustno1
+pyvhx0i
+login
+kvje37f
+123123
+letmein
+i5s1u5f
+123456789
+000000
+letmein
+12345678
+htgbthyn
+buyduni
+1q2w3e4r
+12345
+football
+123456789
+skxiwg
+3iyyvrxp
+passw0rd
+football
+yo8nzk
+1234
+passw0rd
+123456789
+000000
+giub9i
+whatever
+nkha286
+123456789
+1z1u5l
+monkey
+freedom
+football
+admin
+9gmjt0
+j2nbnxu7
+letmein
+qwerty
+passw0rd
+abc123
+ohp3ykjz
+123456789
+login
+j7uxalh
+k2al7h7t
+frnohr6
+8q6nybvd
+trustno1
+welcome
+0842sx8
+dragon
+password
+ael14bs
+u6on4lcx
+7dwj7sc
+rsf08h
+14bfr66
+hviidq
+dragon
+starwars
+yqcm3u
+lx1094
+9rjm9yjj
+master
+1q2w3e4r
+t9od39
+18a48s6h
+465l6s
+1234
+g2lbxg
+nvd00pgo
+login
+password
+5f9c0mqh
+1234
+uqyfc6
+welcome
+123123
+jsb4si
+dragon
+0ui71ca
+master
+football
+yyoqdugd
+txbbp1ji
+73fzh4n
+c3ek0h
+la2m2l2
+l5pugo
+pwwi1zb6
+master
+passw0rd
+lis8az
+iloveyou
+hello
+qwerty
+123123
+123456
+12345678
+vxtwin
+2pfwfk
+passw0rd
+master
+welcome
+starwars
+mdyhibw
+111111
+football
+f3a70w
+passw0rd
+eh4j5z
+starwars
+dfqktf
+password
+dragon
+ob1xw0mt
+qazwsx
+123123
+84jsnu
+8oaxcutf
+9vbvyqja
+trustno1
+111111
+mffpwj0
+12345
+starwars
+qsj8mub
+iaye0fc
+enjwe99o
+12345678
+do3js12
+trustno1
+admin
+trustno1
+000000
+123123
+jmbfoy9
+admin
+d8ldep
+1xh5w1
+12345678
+jum1nz0n
+kp4cab
+football
+edoc1u
+ouyiliu
+uqapu9
+k4g26d
+welcome
+n64cqcy
+8x30hrw
+rrel89je
+000000
+football
+football
+9m2ztnt
+welcome
+6h7xwug4
+05voll
+whatever
+master
+0o8q225h
+d3ir4gc4
+gubrw0
+riz0mpx
+ql2276bv
+lw5p56
+x43hil
+letmein
+b4cpj6
+hello
+passw0rd
+12345
+admin
+letmein
+673wb2e
+12345
+qwerty
+hello
+uoa9s303
+1234
+easzz4ee
+password
+1q2w3e4r
+x3z9o2
+1q2w3e4r
+freedom
+0o87ots1
+sd7eryj
+111111
+0ovver94
+hello
+qwerty
+3mcbq5o
+password
+w82kb72u
+s9jx2l
+letmein
+freedom
+starwars
+nakjqluu
+dud3kh
+welcome
+123456789
+i5bzl9sc
+starwars
+iloveyou
+123123
+xgrcpfe
+abc123
+7h2xtnvm
+1q2w3e4r
+starwars
+admin
+trustno1
+tgj0975
+i6k6msb
+starwars
+letmein
+osmvj13
+1q2w3e4r
+fltxvd4m
+lp5flo
+whatever
+vhwrghc
+master
+qht5oy
+freedom
+welcome
+hello
+login
+8qj3ljs
+trustno1
+monkey
+euy0radf
+admin
+whatever
+123456789
+freedom
+wh83ccsv
+kxgtpj
+12345
+bvazos
+12345
+gvb6xb
+ere203j
+pxo8q7
+login
+qazwsx
+password
+utmi1xl
+admin
+cqvfwyj
+4p4jx77
+passw0rd
+000000
+hello
+111111
+wykz7daq
+vz7r1h8
+guovsls
+qnubnej
+4pv34xw8
+dragon
+o1emgk
+3fg7ysn
+bo596yv
+abc123
+1jp42u
+z9drna
+zp2qs36z
+x7vm05y
+hymqgdo
+admin
+0tgm7cec
+e50s05
+u7zlj5e
+1q2w3e4r
+8o85vn7j
+wnzlaa
+7skuzs
+123123
+t4mb02
+qazwsx
+12345
+haah89sl
+12345
+4g4a9liv
+onoemc1
+jevbowd1
+widwm8
+login
+whatever
+t6yvg9p
+bwfmmaqe
+wc8hq3h
+monkey
+agu0oyo
+ipbrzujk
+dragon
+b2x86ok
+monkey
+lcjjgjz
+dragon
+c6um9wd
+master
+abc123
+5faa1f1t
+3hjbr0
+5pn4cd7
+football
+hsu08t
+4lcbi2s2
+a6n1uqj
+jxgt89jw
+07ld0ln
+4k2g8xgk
+login
+db8rujr6
+eoguqg
+123456
+95pku9v
+68uekcj
+dljnbuv
+c1g8t2
+pvv7hy
+0jzgzj29
+master
+1q2w3e4r
+i6ctjd
+d44oyn4
+000000
+ymnstnvh
+s1kte5
+6e43qk
+hello
+cnjawps6
+123123
+t43x4uq
+j2foed
+nbsyerb
+12345678
+monkey
+lmq43hg
+whatever
+h1ytjug
+freedom
+e7xs4yti
+cu22l58i
+e5oitp
+login
+password
+1h6pb0
+42snz78
+qazwsx
+000000
+4ttzu00k
+vxb5mh6
+000000
+6y8qtl
+whatever
+freedom
+1q2w3e4r
+58t5ya
+6td5thrw
+freedom
+iloveyou
+xa8135x2
+kphv3pgb
+wezbyccg
+12345678
+f653u8x
+1234
+abc123
+fqlfgqsg
+xbon0mh
+t9smig
+login
+starwars
+master
+42fcbu
+letmein
+welcome
+3ses7i
+111111
+shqugl
+iloveyou
+rulb2r
+123456
+000000
+1hsm93
+aac6lmi
+8g27ky
+whatever
+freedom
+6yhi9wff
+monkey
+m15u77j
+password
+123456
+abc123
+12345678
+abc123
+uiehat
+whatever
+otv6iuu
+123456
+wmk7ln
+whatever
+i15aj896
+9cprq8tm
+master
+qazwsx
+auqudx
+kibfdt2y
+000000
+iloveyou
+btt5ucpr
+2uk3jns
+welcome
+password
+monkey
+monkey
+zeubgcc
+rmgcmkmr
+qazwsx
+iloveyou
+thnsls6
+q3s3sz
+starwars
+welcome
+123456
+yp58ck3d
+hello
+trustno1
+dh4irx8y
+123456
+uiqfzh
+123123
+qazwsx
+trustno1
+rnrx8rhq
+welcome
+welcome
+1q2w3e4r
+trustno1
+7erwx67j
+3snf42s
+1234
+wuwph4w
+8389rt13
+hello
+7s0da0
+whatever
+dragon
+hnih4qp
+927n8k
+of90d6z4
+111111
+yxwb866
+whatever
+000000
+freedom
+8gwls0m
+login
+iloveyou
+login
+thp4i0aw
+111111
+8osxpbw
+starwars
+cfwph75a
+master
+vhr59jnh
+whatever
+admin
+welcome
+1iwzx6
+nla7ndt4
+fxo9b1
+monkey
+l2iauph
+lv23wlkg
+8wed98dr
+zn5i84
+freedom
+3ny84x
+000000
+ku3ooj
+1q2w3e4r
+password
+c80j9lv
+password
+master
+6lcbvct
+iloveyou
+q81iyuis
+123123
+idwzfv
+2b9470
+xi28pvmj
+jjrls18
+1q2w3e4r
+iizakd
+rj03r4b
+12345
+qazwsx
+password
+123123
+qwerty
+h75f45
+77xiwui6
+k4sa1jf
+trustno1
+123456
+login
+1234
+grkyz4n
+kx3xzj0p
+i3x1r8u
+qsheob
+football
+football
+v5xpd6t
+password
+ly7yx0j
+74pi9zk
+9e5mts4c
+8amsvh7
+qazwsx
+6g849klb
+julxh61a
+iloveyou
+freedom
+football
+3zcu8g
+freedom
+2cz6415
+master
+caot7be
+hello
+b13at81
+football
+football
+936018
+whatever
+4sm61lk5
+master
+iloveyou
+cvgqqw7q
+whatever
+master
+rotr8yk
+passw0rd
+7p2q1hvp
+qazwsx
+monkey
+123123
+hello
+l3ndfj
+123456
+master
+123123
+whatever
+passw0rd
+68id86nh
+y76h9mv
+l5nb5ot
+dnx205
+123456789
+z4ecfr
+login
+123123
+111111
+monkey
+monkey
+starwars
+gtxr9auc
+agt8yp09
+b0jss1b
+trustno1
+fi1eu8l9
+111111
+1q2w3e4r
+nob4lej
+hjy3ns9
+qpaa7ll
+12345678
+123123
+22iw0ip2
+freedom
+b0ap29
+ncbxfsba
+gec1ol8t
+1q2w3e4r
+db0pbck
+jm072ygb
+52rh0u4v
+123123
+whatever
+trustno1
+login
+master
+xqj8hjv7
+123456789
+monkey
+mpkjz9
+czxv4srx
+hello
+12345
+d5hovq
+zo35i7
+zfll3p
+iooxhw
+qazwsx
+hjx4qcm
+x4qvnqz4
+password
+cluzwdl
+7fqrwywa
+3zk3yt6
+123456
+lyu672
+123456789
+123456
+h0y8t4
+n8wtl2
+football
+whatever
+letmein
+232miyb
+whatever
+trustno1
+welcome
+qazwsx
+1q2w3e4r
+rgtzcy
+iloveyou
+whatever
+62q1fnr
+letmein
+p1ouenr
+48l5a2vj
+abc123
+123456
+dhjnys
+tg9fn3d7
+exwshb8
+trustno1
+welcome
+j3govru
+k04pcrl
+123123
+123456789
+000000
+u6xmp6
+s4qiaa
+123123
+password
+passw0rd
+123456789
+m2ah8fh
+111111
+qwerty
+hlcp4sny
+nng81wc1
+12345
+0zki8je
+111111
+uikdixl8
+starwars
+admin
+t051bs
+welcome
+freedom
+6kebstkb
+freedom
+o922ttt
+wr9o2fb
+v5y1r72c
+xat6g8
+login
+l53k87b
+42a0f4f
+uo6kuqh0
+utcp9s
+trustno1
+l39l6ulz
+gnp1g40
+fal6a3
+letmein
+000000
+85ygn1r
+um3zss2
+starwars
+tytldtc
+hello
+p3i4ikh
+ipv0xyij
+trustno1
+ijtm7l
+h3v4fb
+874cheup
+1q2w3e4r
+gvenwmr
+b05jjw2a
+x3mpbg
+passw0rd
+freedom
+jxls4xu
+6plhqdu4
+hello
+2n20vu
+abc123
+passw0rd
+dragon
+yzvf2y
+7pdymw
+l79p2ou
+03ih8ru
+xzzlx6h0
+qazwsx
+k0ifcfhu
+football
+12345678
+4ihslw
+lavo0jqs
+admin
+monkey
+000000
+ora42r2b
+iloveyou
+1q2w3e4r
+fkdxojkn
+c9zzuwk
+trustno1
+000000
+furrtgl
+1rvb6b
+password
+12345678
+xl7lx89
+iloveyou
+123123
+xpjp7xm
+89l403
+123123
+football
+letmein
+password
+y0to8v
+ot65k4
+skkomgq
+nop9pl2
+akiacbw4
+000000
+000000
+xc41k8d
+master
+wyhm5x6
+02a37a93
+va7qen8q
+ghe9fsbw
+login
+freedom
+letmein
+hello
+urlpqt
+hybhcdvr
+admin
+022hdz7
+hello
+1apca956
+l1cfugt
+hvqzfck
+1234
+login
+freedom
+qazwsx
+w0tiabj
+freedom
+passw0rd
+o18csot
+123456789
+password
+dragon
+abc123
+eixcjh8
+8dk3bude
+hello
+qwerty
+12345
+12345678
+7wmsjdz
+9vgwu7k
+admin
+freedom
+f3n6vb
+3izz39
+welcome
+yae36p
+p8joul
+football
+dragon
+jhhllar
+123456
+iloveyou
+monkey
+dragon
+qazwsx
+123123
+0fql4uu
+64x6q9c
+trustno1
+111111
+abc123
+lverejbu
+12345
+12345678
+xiq6gwdg
+eara85
+zci38j5x
+login
+whatever
+mit2lvdc
+6f0tux1b
+sm4hlk2s
+yc9u2s9f
+34mjfk6
+123123
+12345678
+freedom
+12345678
+123456
+dnp7qyk
+iqp20pee
+welcome
+hello
+iloveyou
+123123
+football
+123123
+qazwsx
+fwq8jfll
+za5frsao
+mt0a6k
+s0fnp9t
+123123
+12345678
+l6l9jq
+t6cr9a
+111111
+dgptduo0
+pndr9id9
+football
+12345
+a9kv9m
+el2hc5
+v8m6mmdx
+letmein
+freedom
+yye6wyq6
+pc40b9o
+u7pbl8
+s54kfgs
+starwars
+1234
+starwars
+iloveyou
+p5maeh9
+hzcnlyr
+4dm9vr0
+ky4mzfdo
+4szalqa5
+1az3x26f
+j700nf
+r75s8e
+password
+freedom
+freedom
+123456
+vajj4m
+football
+master
+12345
+admin
+8hi8z6
+master
+welcome
+yiwyzpmp
+starwars
+master
+111111
+admin
+starwars
+1234
+8jbnua3n
+9s3jgz5
+45fjbgj
+12345678
+passw0rd
+dragon
+12345
+vcibd9
+r8zt2o
+123123
+qazwsx
+qwerty
+am07883m
+123456
+ko8nafm
+passw0rd
+wpwhdr
+1927mini
+letmein
+cbtrfot
+123456
+whatever
+letmein
+football
+ng86oc
+passw0rd
+111111
+0tq4tq9b
+zse053
+starwars
+monkey
+yrn44k
+login
+qazwsx
+lbn33h6
+starwars
+000000
+123123
+n2k632
+password
+welcome
+2lojkm1
+123123
+000000
+12345678
+v9gttinc
+d2qmxa
+7gd4k4
+welcome
+football
+starwars
+password
+axndi13
+freedom
+v1do0b3
+2uhu5l
+monkey
+qmkl8vw
+qb9y5ukk
+mxcp0bw
+1234
+q045pm
+welcome
+qazwsx
+tv36d3
+38oimf7
+master
+7b36bi
+as396p83
+8vt6pf
+wmebqtyh
+2m7lp1aa
+passw0rd
+freedom
+zwcocqy1
+g5jkc2
+q5x16li
+lc78l8z
+1234
+kkb95h0v
+9bzapfw2
+freedom
+vzuc2u
+dragon
+ixmscq1
+95d7yguc
+qazwsx
+master
+e4xbya
+freedom
+wi3nv9
+master
+s11xh4b0
+7yb9ui
+secure123
+finaltest
 
-<!DOCTYPE html> 
-<html ng-app="loginApp"> 
-<head> 
-<title>Login</title> 
-<style>
-     input.ng-invalid.ng-touched { border-color: red; }
-        input.ng-valid.ng-touched { border-color: green; }
-</style>
-<script 
-src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> 
-</head> 
-<body ng-controller="ctrl"> 
-<h2>Login Form</h2> 
-<form name="f" ng-submit="login()" novalidate> 
-Username:<br> 
-<input type="text" ng-model="u" ng-minlength="4" required><br><br> 
-Password:<br> 
-<input type="password" ng-model="p" ng-minlength="4" required><br><br> 
-<button type="submit">Login</button> 
-</form> 
-<p style="color:green" ng-if="ok">Login Successful!</p> 
-<p style="color:red" ng-if="no">Invalid Login</p> 
-<script> 
-var app = angular.module("loginApp", []); 
-app.controller("ctrl", function($scope){ 
-const user="user", pass="123456"; //note: this is a correct login id // 
-$scope.login = function(){ 
-if($scope.u==user && $scope.p==pass){ 
-$scope.ok = true; 
-$scope.no = false; 
-} else { 
-$scope.no = true; 
-$scope.ok = false; 
-} 
-}; 
-}); 
-</script> 
-</body> 
-</html>
 
 
-employee list
+# ============================
+# PART B - Program 5
+# Caesar Cipher
+# ============================
 
-<!DOCTYPE html>
-<html lang="en" ng-app="employeeApp">
-<head>
- <meta charset="UTF-8">
- <title>Employee List</title>
- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+def encrypt(text, key):
+    result = ""
+    for char in text:
+        if char.isalpha():  # Encrypt only letters
+            shift = 65 if char.isupper() else 97
+            result += chr((ord(char) - shift + key) % 26 + shift)
+        else:
+            result += char
+    return result
 
-</head>
-<body ng-controller="EmployeeController">
- <h1>Employee List</h1>
- <input type="text" ng-model="searchName" placeholder="Search by name" />
- <input type="number" ng-model="searchSalary" placeholder="Search by salary" />
- <!-- Employee Table -->
- <table border=1px>
- <thead>
- <tr>
- <th>Name</th>
- <th>Position</th>
- <th>Salary</th>
- </tr>
- </thead>
- <tbody>
- <tr ng-repeat="employee in employees | filter:customFilter">
- <td>{{ employee.name }}</td>
- <td>{{ employee.position }}</td>
- <td>{{ employee.salary | currency }}</td>
- </tr>
- </tbody>
- </table>
- <script>
- var app = angular.module('employeeApp', []);
- app.controller('EmployeeController', function($scope) {
- $scope.employees = [
- { name: 'Anya', position: 'Data Analyst', salary: 70000 },
-  { name: 'Ben', position: 'DevOps Engineer', salary: 78000 },
-  { name: 'Chloe', position: 'Marketing Lead', salary: 62000 },
-  { name: 'David', position: 'Business Analyst', salary: 65000 },
-  { name: 'Elara', position: 'Customer Support Lead', salary: 53000 }
- ];
- $scope.customFilter = function(employee) {
- var nameMatch = true;
- var salaryMatch = true;
- if ($scope.searchName) {
- nameMatch =
-employee.name.toLowerCase().includes($scope.searchName.toLowerCase());
- }
- if ($scope.searchSalary) {
- salaryMatch = employee.salary === parseInt($scope.searchSalary);
- }
- return nameMatch && salaryMatch;
- };
- });
- </script>
-</body>
-</html>
+def decrypt(text, key):
+    result = ""
+    for char in text:
+        if char.isalpha():
+            shift = 65 if char.isupper() else 97
+            result += chr((ord(char) - shift - key) % 26 + shift)
+        else:
+            result += char
+    return result
 
-shopping cart
+def brute_force(text):
+    print("\n--- Brute Force Results ---")
+    for k in range(1, 26):  # Try all possible keys
+        print(f"Key {k}: {decrypt(text, k)}")
 
-<!DOCTYPE html>
-<html ng-app="shoppingApp">
-<head>
- <meta charset="UTF-8">
- <title>Simple Shopping Cart</title>
- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+# Menu-driven program
+while True:
+    print("\n=== Caesar Cipher Menu ===")
+    print("1. Encrypt")
+    print("2. Decrypt")
+    print("3. Brute Force Decrypt")
+    print("4. Exit")
 
-</head>
-<body ng-controller="CartController">
- <h2>Available Products</h2>
- <table border=1px>
- <tr>
- <th>Name</th>
- <th>Price ($)</th>
- <th>Action</th>
- </tr>
- <tr ng-repeat="product in products">
- <td>{{ product.name }}</td>
- <td>{{ product.price }}</td>
- <td><button ng-click="addToCart(product)">Add to Cart</button></td>
- </tr>
- </table>
- 
- <h2>Your Cart</h2>
- <table ng-if="cart.length > 0" border=1px>
- <tr>
- <th>Name</th>
- <th>Price ($)</th>
- <th>Action</th>
- </tr>
- <tr ng-repeat="item in cart">
- <td>{{ item.name }}</td>
- <td>{{ item.price }}</td>
- <td><button ng-click="removeFromCart($index)">Remove</button></td>
- </tr>
- <tr>
- <td colspan="1"><strong>Total</strong></td>
- <td colspan="2"><strong>${{ getTotal() }}</strong></td>
- </tr>
- </table>
- <p ng-if="cart.length == 0">Your cart is empty.</p>
- 
- <script>
- angular.module('shoppingApp', [])
- .controller('CartController', function($scope) {
+    choice = input("Enter your choice (1-4): ")
 
-  $scope.products = [
-  { name: 'ASUS LAPTOP', price: 150000 },
-  { name: 'Iphone', price: 200000 },
-  { name: 'Headset', price: 1500 },
-  { name: 'RGB KEYBOARD', price: 2000 },
-  { name: 'USB DRIVE', price: 500 }
-  ];
-  
-  $scope.cart = [];
-  
-  $scope.addToCart = function(product) {
-  $scope.cart.push(product);
-  };
-  
-  
-  $scope.removeFromCart = function(index) {
-  $scope.cart.splice(index, 1);
-  };
-  
-  $scope.getTotal = function() {
-  let total = 0;
-  angular.forEach($scope.cart, function(item) {
-  total += item.price;
-  });
-  return total;
-  };
- });
- </script>
-</body>
-</html>
+    if choice == "1":
+        plain_text = input("Enter the plain text: ")
+        key = int(input("Enter the key value (1-26): "))
+        cipher_text = encrypt(plain_text, key)
+        print("Cipher Text:", cipher_text)
+
+    elif choice == "2":
+        cipher_text = input("Enter the cipher text: ")
+        key = int(input("Enter the key value (1-26): "))
+        plain_text = decrypt(cipher_text, key)
+        print("Decrypted Text:", plain_text)
+
+    elif choice == "3":
+        cipher_text = input("Enter the cipher text: ")
+        brute_force(cipher_text)
+
+    elif choice == "4":
+        print("Exiting program...")
+        break
+
+    else:
+        print("Invalid choice! Try again.")
 
 
-student attendance
 
-<!DOCTYPE html>
-<html ng-app="attendanceApp">
-<head>
- <meta charset="UTF-8">
- <title>Student Attendance Tracker</title>
- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
- 
-</head>
-<body ng-controller="AttendanceController">
- <h2>Student Attendance Tracker</h2>
- <table border=1px>
- <tr>
- <th>Roll No</th>
- <th>Name</th>
- <th>Attendance</th>
- </tr>
- <tr ng-repeat="student in students">
- <td>{{ student.roll }}</td>
- <td>{{ student.name }}</td>
- <td>
- <select ng-model="student.status">
- <option value="Present">Present</option>
- <option value="Absent">Absent</option>
- </select>
- </td>
- </tr>
- </table>
- 
- <h3>Attendance Summary</h3>
- <p>Total Students: {{ students.length }}</p>
- <p>Present: {{ getPresentCount() }}</p>
- <p>Absent: {{ getAbsentCount() }}</p>
- 
- <script>
- angular.module('attendanceApp', [])
- .controller('AttendanceController', function($scope) {
-  // Predefined list of students with default status
-  $scope.students = [
-  { roll: 25101, name: 'Giridhar Pai', status: 'Present' },
-  { roll: 25102, name: 'Jesteena', status: 'Present' },
-  { roll: 25103, name: 'Tenzin', status: 'Absent' },
-  { roll: 25104, name: 'Ananth', status: 'Present' },
-  { roll: 25105, name: 'Vinayak', status: 'Absent' }
-  ];
- 
-  // Function to count Present students
-  $scope.getPresentCount = function() {
-  let count = 0;
-  angular.forEach($scope.students, function(student) {
-  if (student.status === 'Present') count++;
-  });
-  return count;
-  };
- 
-  // Function to count Absent students
-  $scope.getAbsentCount = function() {
-  let count = 0;
-  angular.forEach($scope.students, function(student) {
-  if (student.status === 'Absent') count++;});
-  return count;
-  };
- });
- </script>
-</body>
-</html>
+# ============================
+# PART B - Program 6
+# Password Security Management
+# ============================
+import re, random, string
+def create_password():
+    length = int(input("Enter password length: "))
+    chars = string.ascii_letters + string.digits + string.punctuation
+    password = "".join(random.choice(chars) for _ in range(length))
+    print("Generated Password:", password)
+
+def check_strength():
+    password = input("Enter a password: ")
+    strength = 0
+    if len(password) >= 8: strength += 1
+    if re.search("[a-z]", password): strength += 1
+    if re.search("[A-Z]", password): strength += 1
+    if re.search("[0-9]", password): strength += 1
+    if re.search("[@#$%^&*()_+=!]", password): strength += 1
+    if strength == 5: print("Strong Password")
+    elif strength >= 3: print("Medium Strength Password")
+    else: print("Weak Password")
+
+while True:
+    print("\n1. Check Password Strength\n2. Generate Password\n3. Exit")
+    choice = input("Enter choice: ")
+    if choice == "1": check_strength()
+    elif choice == "2": create_password()
+    elif choice == "3": break
+    else: print("Invalid choice")
