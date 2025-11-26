@@ -6,45 +6,29 @@ import base64
 import urllib.parse
 import html
 
-def base64_encode_decode(text):
-    encoded = base64.b64encode(text.encode()).decode()
-    decoded = base64.b64decode(encoded.encode()).decode()
-    return encoded, decoded
-
-def url_encode_decode(text):
-    encoded = urllib.parse.quote(text)
-    decoded = urllib.parse.unquote(encoded)
-    return encoded, decoded
-
-def html_encode_decode(text):
-    encoded = html.escape(text)
-    decoded = html.unescape(encoded)
-    return encoded, decoded
-
-def hex_encode_decode(text):
-    encoded = text.encode().hex()
-    decoded = bytes.fromhex(encoded).decode()
-    return encoded, decoded
-
 def main():
-    sample_text = "<script>alert('XSS')</script>"
-    print("Original Text:", sample_text)
+    text = "<script>alert('XSS')</script>"
+    print("Original:", text)
 
-    b64_enc, b64_dec = base64_encode_decode(sample_text)
-    print("\nBase64 Encoding:", b64_enc)
-    print("Base64 Decoding:", b64_dec)
+    # Base64
+    b64 = base64.b64encode(text.encode()).decode()
+    print("\nBase64 Enc:", b64)
+    print("Base64 Dec:", base64.b64decode(b64).decode())
 
-    url_enc, url_dec = url_encode_decode(sample_text)
-    print("\nURL Encoding:", url_enc)
-    print("URL Decoding:", url_dec)
+    # URL
+    url = urllib.parse.quote(text)
+    print("\nURL Enc:", url)
+    print("URL Dec:", urllib.parse.unquote(url))
 
-    html_enc, html_dec = html_encode_decode(sample_text)
-    print("\nHTML Encoding:", html_enc)
-    print("HTML Decoding:", html_dec)
+    # HTML
+    html_enc = html.escape(text)
+    print("\nHTML Enc:", html_enc)
+    print("HTML Dec:", html.unescape(html_enc))
 
-    hex_enc, hex_dec = hex_encode_decode(sample_text)
-    print("\nHex Encoding:", hex_enc)
-    print("Hex Decoding:", hex_dec)
+    # Hex
+    hex_enc = text.encode().hex()
+    print("\nHex Enc:", hex_enc)
+    print("Hex Dec:", bytes.fromhex(hex_enc).decode())
 
 if __name__ == "__main__":
     main()
